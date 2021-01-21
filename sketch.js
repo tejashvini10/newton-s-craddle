@@ -22,15 +22,18 @@ function setup() {
 	world = engine.world;
 
 	//Create the Bodies Here.
-	roofObject= new Roof(300,10,1100,30);
+	roofObject= new Roof(width/2,height/4,width/7,20);
+	bobDiameter;
+	
+	startBobPositionX=width/2;
+	startBobPositionY=height/4+500;
+	bobObject1=new bob(startBobPositionX-bobDiameter*2,startBobPositionY,bobDiameter);
+	bobObject2=new bob(startBobPositionX-bobDiameter,startBobPositionY,bobDiameter);
+	bobObject3=new bob(startBobPositionX,startBobPositionY,bobDiameter);
+	bobObject4=new bob(startBobPositionX+bobDiameter,startBobPositionY,bobDiameter);
+	bobObject5=new bob(startBobPositionX+bobDiameter*2,startBobPositionY,bobDiameter);
 	
 	
-	bobObject1=new Bob(400,500,100);
-	bobObject2=new Bob(500,500,100);
-	bobObject3=new Bob(600,500,100);
-	bobObject4=new Bob(700,500,100);
-	bobObject5=new Bob(800,500,100);
-
 	var render=Render.create({
 		element:document.body,
 		engine:engine,
@@ -40,12 +43,18 @@ function setup() {
 			wideframes:false
 		}
 	});
-
+	
 	rope1=new Rope(bobObject1.body,roofObject.body,-200,0);
 	rope2=new Rope(bobObject2.body,roofObject.body,-100,0);
 	rope3=new Rope(bobObject3.body,roofObject.body,-0*2,0);
 	rope4=new Rope(bobObject4.body,roofObject.body,100,0);
 	rope5=new Rope(bobObject5.body,roofObject.body,200,0);
+	
+	
+
+	
+
+	
 
 	Engine.run(engine);
   
@@ -67,14 +76,24 @@ function draw() {
   bobObject3.display();
   bobObject4.display();
   bobObject5.display();
-  keyPressed();
+  
   drawSprites();
  
 }
 function keyPressed(){
 	if(keyCode===UP_ARROW){
-		Matter.Body.applyForce(bobObject1.body,bobObject1.body.position,{x:-20,y:-20});
+		Matter.Body.applyForce(bobObject1.body,bobObject1.body.position,{x:-50,y:-45});
 	}
 }
 
+function drawLine(constraint)
+{
+	bobBodyPosition=constraint.bodyA.position
+	roofBodyPosition=constraint.bodyB.position
 
+	roofBodyOffset=constraint.pointB;
+	
+	roofBodyX=roofBodyPosition.x+roofBodyOffset.x
+	roofBodyY=roofBodyPosition.y+roofBodyOffset.y
+	line(bobBodyPosition.x, bobBodyPosition.y, roofBodyX,roofBodyY);
+}
