@@ -9,6 +9,7 @@ const Constraint=Matter.Constraint;
 var bobObject1,bobObject2,bobObject3,bobObject4,bobObject5,roofObject;
 var rope1,rope2,rope3,rope4,rope5;
 var world,engine;
+var  bobDiameter;
 function preload()
 {
 	
@@ -23,7 +24,7 @@ function setup() {
 
 	//Create the Bodies Here.
 	roofObject= new Roof(width/2,height/4,width/7,20);
-	var bobDiameter=40;
+	 bobDiameter=40;
 	
 	startBobPositionX=width/2;
 	startBobPositionY=height/4+500;
@@ -44,11 +45,12 @@ function setup() {
 		}
 	});
 	
-	rope1=new Rope(bobObject1.body,roofObject.body,-200,0);
-	rope2=new Rope(bobObject2.body,roofObject.body,-100,0);
-	rope3=new Rope(bobObject3.body,roofObject.body,-0*2,0);
-	rope4=new Rope(bobObject4.body,roofObject.body,100,0);
-	rope5=new Rope(bobObject5.body,roofObject.body,200,0);
+	rope1=new rope(bobObject1.body,roofObject.body,-bobDiameter*2, 0)
+
+	rope2=new rope(bobObject2.body,roofObject.body,-bobDiameter*1, 0)
+	rope3=new rope(bobObject3.body,roofObject.body,0, 0)
+	rope4=new rope(bobObject4.body,roofObject.body,bobDiameter*1, 0)
+	rope5=new rope(bobObject5.body,roofObject.body,bobDiameter*2, 0)
 	
 	
 
