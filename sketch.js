@@ -23,7 +23,7 @@ function setup() {
 
 	//Create the Bodies Here.
 	roofObject= new Roof(width/2,height/4,width/7,20);
-	bobDiameter;
+	var bobDiameter=40;
 	
 	startBobPositionX=width/2;
 	startBobPositionY=height/4+500;
