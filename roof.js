@@ -4,10 +4,13 @@ class Roof {
     isStatic:true
     
         }
+        this.x=x;
+		this.y=y;
+         this.width=width;
+     this.height=height;
         this.body=Bodies.rectangle(x,y,width,height,options);
         
-     this.width=width;
-     this.height=height;
+    
     
      
     World.add(world,this.body);
@@ -20,8 +23,8 @@ class Roof {
     rectMode(CENTER)
     
     fill(0,255,0)
-    rect(roofpos.x,roofpos.y,this.width,this.height);
+    rect(0,0,this.width,this.height);
     pop()
     }
-    };
+    }
     
